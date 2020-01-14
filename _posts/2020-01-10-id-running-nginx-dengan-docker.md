@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Running Nginx dengan Docker"
+title: "Running Nginx dengan docker"
 date: 2020-01-10 10:00:00 +0700
 categories: docker
 ---
