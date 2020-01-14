@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Membuat docker images dari dockerfile - [ID]"
+title: "Membuat docker images dari dockerfile Part-1 - [ID]"
 date: 2020-01-12 10:00:00 +0700
 categories: docker
 ---
@@ -56,35 +56,45 @@ git pull https://github.com/ametdoohan/lighttpd-alpine-docker.git
 {% endhighlight %}
 
 {:start="2"}
-
-2. build image dengan docker build (docker build . -t namaimage:tag)
+2. Build image dengan docker build (docker build . -t namaimage:tag)
 
 {% highlight bash %}
 $ docker build . -t my_alpine_lighttpd:latest
 {% endhighlight %}
 
+{:start="3"}
+3. Melihat image yang telah terbuat.
+
 {% highlight bash %}
-Sending build context to Docker daemon  56.83kB
-Step 1/7 : FROM alpine:latest
- ---> cc0abc535e36
-Step 2/7 : MAINTAINER amet doohan <ametdoohan@live.com>
- ---> Using cache
- ---> 0421c900d735
-Step 3/7 : LABEL version="1.0"
- ---> Using cache
- ---> 35aeb6b27334
-Step 4/7 : LABEL description="lighttpd running on port 80"
- ---> Using cache
- ---> 9806a76e3eae
-Step 5/7 : EXPOSE 80
- ---> Using cache
- ---> 65eb42126ae4
-Step 6/7 : RUN apk add --update --no-cache lighttpd &&  rm -rf /var/cache/apk/* &&      lighttpd -t -f /etc/lighttpd/lighttpd.conf &&   echo "Lighttpd is running..." > /var/www/localhost/htdocs/index.html &&  addgroup www &&         adduser -D -H -s /sbin/nologin -G www www
- ---> Using cache
- ---> 28c2346a0fbb
-Step 7/7 : ENTRYPOINT ["/usr/sbin/lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
- ---> Using cache
- ---> 20be9f7d05b6
-Successfully built 20be9f7d05b6
-Successfully tagged my_alpine_lighttpd:latest
+$ docker images
+
+REPOSITORY           TAG                 IMAGE ID            CREATED              SIZE
+my_alpine_lighttpd   latest              396e79d82866        About a minute ago   13.7MB
 {% endhighlight %}
+
+{:start="4"}
+4. Running container menggunakan image yang telah dibuat, command dibawah running container pada port 8080
+
+{% highlight bash %}
+$ docker run -d -p 8080:80 --name my_web_server my_alpine_lighttpd:latest
+{% endhighlight %}
+
+{% highlight bash %}
+$  docker ps
+CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                  NAMES
+c7cc9786f262        my_alpine_lighttpd:latest   "/usr/sbin/lighttpd …"   41 seconds ago      Up 40 seconds       0.0.0.0:8080->80/tcp   my_web_server
+{% endhighlight %}
+
+{:start="5"}
+5. Cek apakah webserver telah running
+
+{% highlight bash %}
+$ curl http://localhost:8080
+Lighttpd is running...
+{% endhighlight %}
+
+web server menggunakan lighttpd yang running pada image base alpine telah running! 
+
+Sneak peek untuk Part-2:
+- merubah htdocs sesuai keinginan.
+- push docker image ke registry.
