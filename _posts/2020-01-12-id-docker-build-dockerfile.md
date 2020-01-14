@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Membuat docker images dari dockerfile Part-1 - [ID]"
+title: "Membuat docker images dari dockerfile Part-1"
 date: 2020-01-12 10:00:00 +0700
 categories: docker
 ---
@@ -96,5 +96,5 @@ Lighttpd is running...
 web server menggunakan lighttpd yang running pada image base alpine telah running! 
 
 Sneak peek untuk Part-2:
-- merubah htdocs sesuai keinginan.
+- merubah htdocs sesuai keinginan (bind mounts).
 - push docker image ke registry.

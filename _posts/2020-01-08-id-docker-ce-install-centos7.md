@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Install docker CE di CentOS 7 - [ID]"
+title: "Install docker CE di CentOS 7"
 date: 2020-01-08 10:00:00 +0700
 categories: docker
 ---

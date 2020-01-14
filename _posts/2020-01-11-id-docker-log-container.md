@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Log nginx container pada Docker - [ID]"
+title: "Log nginx container pada Docker"
 date: 2020-01-11 10:00:00 +0700
 categories: docker
 ---

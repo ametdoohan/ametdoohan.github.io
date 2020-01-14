@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Running Docker sebagai User - [ID]"
+title: "Running Docker sebagai User"
 date: 2020-01-09 10:00:00 +0700
 categories: docker
 ---
