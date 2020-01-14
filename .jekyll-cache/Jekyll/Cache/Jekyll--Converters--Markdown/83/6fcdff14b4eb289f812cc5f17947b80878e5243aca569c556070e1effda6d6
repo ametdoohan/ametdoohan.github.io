@@ -1,0 +1,84 @@
+I"…<p>Ini adalah guide untuk install Docker CE di CentOS7</p>
+
+<p>Prerequisties :</p>
+<ul>
+  <li>CentOS 7</li>
+  <li>User account yang mempunyai sudo privileges</li>
+  <li>Akses SSH ke server tersebut</li>
+  <li>CentOS Extras repository</li>
+</ul>
+
+<p>Install menggunakan repository docker-ce.repo</p>
+
+<ol>
+  <li>Install Package yang dibutuhkan.</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> yum-utils <span class="se">\</span>
+  device-mapper-persistent-data <span class="se">\</span>
+  lvm2</code></pre></figure>
+
+<ol start="2">
+  <li>Setup stable repository.</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>yum-config-manager <span class="se">\</span>
+    <span class="nt">--add-repo</span> <span class="se">\</span>
+    https://download.docker.com/linux/centos/docker-ce.repo</code></pre></figure>
+
+<ol start="3">
+  <li>Install latest version Docker Engine - Community</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> docker-ce docker-ce-cli containerd.io</code></pre></figure>
+
+<ol start="4">
+  <li>Start docker Services</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>systemctl start docker</code></pre></figure>
+
+<ol start="5">
+  <li>Enable automatically start on boot</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>systemctl <span class="nb">enable </span>docker</code></pre></figure>
+
+<ol start="6">
+  <li>Verifikasi test bahwa Docker CE sudah terinstall</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>docker run hello-world</code></pre></figure>
+
+<p>Jika berhasil maka hasilnya seperti berikut</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">Unable to find image <span class="s1">'hello-world:latest'</span> locally
+latest: Pulling from library/hello-world
+1b930d010525: Pull <span class="nb">complete
+</span>Digest: sha256:d1668a9a1f5b42ed3f46b70b9cb7c88fd8bdc8a2d73509bb0041cf436018fbf5
+Status: Downloaded newer image <span class="k">for </span>hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the <span class="s2">"hello-world"</span> image from the Docker Hub.
+    <span class="o">(</span>amd64<span class="o">)</span>
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ <span class="nv">$ </span>docker run <span class="nt">-it</span> ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+ </code></pre></figure>
+
+<p>Selamat, Install docker CE di CentOS 7 telah berhasil!</p>
+:ET

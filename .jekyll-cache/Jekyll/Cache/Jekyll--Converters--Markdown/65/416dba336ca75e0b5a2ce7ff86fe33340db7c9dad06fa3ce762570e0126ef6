@@ -1,0 +1,69 @@
+I"=<p>Ini adalah guide Running Nginx dengan Docker</p>
+
+<p>Prerequisties :</p>
+<ul>
+  <li>Docker sudah terinstall. <a href="https://ametdoohan.github.io/id-docker-ce-install-centos7/">Install docker CE di CentOS 7 - [ID]</a></li>
+</ul>
+
+<p>berikut step running nginx dengan docker</p>
+
+<ol>
+  <li>Pull images nginx terbaru. (kecepatan tergantung koneksi kalian)</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>docker pull nginx:latest</code></pre></figure>
+
+<p>Jika telah selesai, lihat images yang sudah di download</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+nginx               latest              c7460dfcab50        30 hours ago        126MB
+hello-world         latest              fce289e99eb9        12 months ago       1.84kB</code></pre></figure>
+
+<ol start="2">
+  <li>Run container dengan image nginx yang sudah di pull. container akan dinamakan mycontainer dan running port 8080</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>docker run <span class="nt">--name</span> mycontainer <span class="nt">-p</span> 8080:80 nginx:latest</code></pre></figure>
+
+<ol start="3">
+  <li>buka terminal baru untuk melihat apakah container running</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
+b80639e011db        nginx:latest        <span class="s2">"nginx -g 'daemon of…"</span>   22 seconds ago      Up 21 seconds       0.0.0.0:8080-&gt;80/tcp   mycontainer</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>curl localhost:8080
+&lt;<span class="o">!</span>DOCTYPE html&gt;
+&lt;html&gt;
+&lt;<span class="nb">head</span><span class="o">&gt;</span>
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+    body <span class="o">{</span>
+        width: 35em<span class="p">;</span>
+        margin: 0 auto<span class="p">;</span>
+        font-family: Tahoma, Verdana, Arial, sans-serif<span class="p">;</span>
+    <span class="o">}</span>
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">"http://nginx.org/"</span><span class="o">&gt;</span>nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">"http://nginx.com/"</span><span class="o">&gt;</span>nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you <span class="k">for </span>using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></figure>
+
+<p>Selamat, Running Nginx dengan Docker telah berhasil!.</p>
+
+<p>tambahan, apabila ingin running container di background, dapat menggunakan option ‘-d’ atau ‘–detach’ pada step nomor 2</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>docker run <span class="nt">-d</span> <span class="nt">--name</span> mycontainer <span class="nt">-p</span> 8080:80 nginx:latest</code></pre></figure>
+:ET
