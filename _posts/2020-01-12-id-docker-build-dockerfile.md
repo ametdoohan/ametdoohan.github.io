@@ -93,8 +93,4 @@ $ curl http://localhost:8080
 Lighttpd is running...
 {% endhighlight %}
 
-web server menggunakan lighttpd yang running pada image base alpine telah running! 
-
-Sneak peek untuk Part-2:
-- merubah htdocs sesuai keinginan (bind mounts).
-- push docker image ke registry.
+web server menggunakan lighttpd yang running pada image base alpine telah running! Tutorial selanjutnya ada di [Part-2](https://ametdoohan.github.io/id-docker-push-registry/) 
